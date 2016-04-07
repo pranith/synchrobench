@@ -198,6 +198,12 @@ ifeq ($(ARCH_NAME), x86_64)
     LDFLAGS += -m64
 endif
 
+ifeq ($(ARCH_NAME), aarch64)
+    ARCH = aarch64
+    CFLAGS += --static
+    LDFLAGS += --static
+endif
+
 ifeq ($(ARCH_NAME), sun4v)
     ARCH = sparc64
     CFLAGS += -DSPARC=1 -DINLINED=1 -mt -fast -m64
