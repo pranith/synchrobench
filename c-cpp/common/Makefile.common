@@ -214,13 +214,13 @@ endif
 # Global settings
 #################
 
-CFLAGS += -D_REENTRANT
+CFLAGS += -D_REENTRANT --static
 #CFLAGS += -Wall
 CFLAGS += -fno-strict-aliasing
 CFLAGS += -I$(LIBAO_INC) -I$(ROOT)/include
 
 #LDFLAGS += -L$(LIBAO)/lib -latomic_ops 
-LDFLAGS += -lpthread
+LDFLAGS += -lpthread --static
 
 ifdef STM
   ifneq ($(STM), SEQUENTIAL)
