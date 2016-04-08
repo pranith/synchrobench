@@ -35,6 +35,7 @@ clean-build:
 
 clean:
 	$(MAKE) -C src/utils/estm-0.3.0 clean
+	$(MAKE) -C src/utils/estm-0.2.4.3 clean
 	rm -rf build bin
 
 $(BENCHS):
