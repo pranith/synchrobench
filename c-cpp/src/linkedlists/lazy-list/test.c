@@ -21,6 +21,7 @@
  * GNU General Public License for more details.
  */
 
+#include "qsim_magic.h"
 #include "intset.h"
 
 typedef struct barrier {
@@ -418,6 +419,8 @@ int main(int argc, char **argv)
   }
   pthread_attr_destroy(&attr);
 	
+  
+  APP_START();
   /* Start threads */
   barrier_cross(&barrier);
 	
@@ -433,6 +436,7 @@ int main(int argc, char **argv)
   gettimeofday(&end, NULL);
   printf("STOPPING...\n");
 	
+  
   /* Wait for thread completion */
   for (i = 0; i < nb_threads; i++) {
     if (pthread_join(threads[i], NULL) != 0) {
@@ -441,6 +445,7 @@ int main(int argc, char **argv)
     }
   }
 	
+  APP_END();
   duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000);
   aborts = 0;
   aborts_locked_read = 0;

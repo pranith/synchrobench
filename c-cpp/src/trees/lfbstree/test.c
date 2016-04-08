@@ -28,6 +28,7 @@
 
 #include "wfrbt.h"
 #include "operations.h"
+#include "qsim_magic.h"
 
 #define DEFAULT_DURATION                1000
 #define DEFAULT_INITIAL                 256
@@ -548,7 +549,9 @@ void *test2(void *data)
       }
     }
     pthread_attr_destroy(&attr);
-		
+
+    APP_START();
+
     /* Start threads */
     barrier_cross(&barrier);
 		
@@ -577,7 +580,9 @@ void *test2(void *data)
 	exit(1);
       }
     }
-		
+
+    APP_END();
+
     duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - 
       (start.tv_sec * 1000 + start.tv_usec / 1000);
     reads = 0;

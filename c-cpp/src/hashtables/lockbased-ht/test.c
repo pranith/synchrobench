@@ -22,6 +22,7 @@
  */
 
 #include "hashtable-lock.h"
+#include "qsim_magic.h"
 
 unsigned int maxhtlength;
 
@@ -513,7 +514,8 @@ int main(int argc, char **argv)
 	}
 	pthread_attr_destroy(&attr);
 	
-	/* Start threads */
+	APP_START();
+        /* Start threads */
 	barrier_cross(&barrier);
 	
 	printf("STARTING...\n");
@@ -527,7 +529,7 @@ int main(int argc, char **argv)
 	AO_store_full(&stop, 1);
 	gettimeofday(&end, NULL);
 	printf("STOPPING...\n");
-	
+
 	/* Wait for thread completion */
 	for (i = 0; i < nb_threads; i++) {
 		if (pthread_join(threads[i], NULL) != 0) {
@@ -536,7 +538,9 @@ int main(int argc, char **argv)
 		}
 	}
 	
-	duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000);
+        APP_END();
+	
+        duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000);
 	aborts = 0;
 	aborts_locked_read = 0;
 	aborts_locked_write = 0;

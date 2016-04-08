@@ -23,6 +23,7 @@
  * GNU General Public License for more details.
  */
 
+#include "qsim_magic.h"
 #include "intset.h"
 
 /* Hashtable length (# of buckets) */
@@ -887,7 +888,9 @@ int main(int argc, char **argv)
 	pthread_attr_destroy(&attr);
 
 	
-	// Start threads 
+	
+	APP_START();
+        // Start threads 
 	barrier_cross(&barrier);
 	
 	printf("STARTING...\n");
@@ -920,7 +923,9 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 	}
+        
 
+        APP_END();
 
 	duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000);
 	aborts = 0;

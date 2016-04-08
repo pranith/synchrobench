@@ -21,6 +21,7 @@
  * GNU General Public License for more details.
  */
 
+#include "qsim_magic.h"
 #include "intset.h"
 
 volatile AO_t stop;
@@ -532,6 +533,8 @@ void *test2(void *data)
     }
     pthread_attr_destroy(&attr);
 		
+    
+    APP_START();
     /* Start threads */
     barrier_cross(&barrier);
 		
@@ -574,7 +577,9 @@ void *test2(void *data)
 	exit(1);
       }
     }
-		
+    
+        
+    APP_END();
     duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - 
       (start.tv_sec * 1000 + start.tv_usec / 1000);
     aborts = 0;

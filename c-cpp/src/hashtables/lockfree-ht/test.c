@@ -22,6 +22,7 @@
  */
 
 #include "intset.h"
+#include "qsim_magic.h"
 
 /* Hashtable length (# of buckets) */
 unsigned int maxhtlength;
@@ -617,7 +618,9 @@ int main(int argc, char **argv)
 		}
 	}
 	pthread_attr_destroy(&attr);
-	
+
+        APP_START();
+
 	// Start threads 
 	barrier_cross(&barrier);
 	
@@ -633,6 +636,7 @@ int main(int argc, char **argv)
 	gettimeofday(&end, NULL);
 	printf("STOPPING...\n");
 
+
 	//print_ht(set);
 	
 	// Wait for thread completion 
@@ -642,7 +646,10 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 	}
-	duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000);
+	
+        APP_END();
+        
+        duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000);
 	aborts = 0;
 	aborts_locked_read = 0;
 	aborts_locked_write = 0;

@@ -20,6 +20,7 @@
  * GNU General Public License for more details.
  */
 
+#include "qsim_magic.h"
 #include "intset.c"
 #define ATOMIC_LOAD_MB(a)               (AO_load((volatile AO_t *)(a)))
 #define MAXLEVEL						32
@@ -905,7 +906,9 @@ int main(int argc, char **argv)
 		exit(1);
 		}
 	
-	// Start threads 
+	
+	APP_START();
+        // Start threads 
 	barrier_cross(&barrier);
 	
 	printf("STARTING...\n");
@@ -919,7 +922,8 @@ int main(int argc, char **argv)
 	AO_store_full(&stop, 1);
 	gettimeofday(&end, NULL);
 	printf("STOPPING...\n");
-	
+
+
 	// Wait for thread completion 
 	for (i = 0; i < nb_threads; i++) {
 		if (pthread_join(threads[i], NULL) != 0) {
@@ -927,7 +931,9 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 	}
-	
+
+                
+        APP_END();
 	duration = (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000);
 	aborts = 0;
 	aborts_locked_read = 0;
