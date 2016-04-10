@@ -16,6 +16,8 @@ XBDIR 		?= SET_XBOOST_PATH
 SOLARIS_CC 	?= gcc
 CC		= gcc
 
+CFLAGS += -DUSE_QSIM
+
 # Version
 ifeq ($(VERSION),DEBUG)
      CFLAGS     += -g -DDEBUG -O0

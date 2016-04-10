@@ -1,3 +1,7 @@
+To generate qsim tar files, run the following:
+
+make ARCH=aarch64 CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++
+
 Synchrobench
 ========
 Synchrobench is a micro-benchmark suite used to evaluate synchronization 
