@@ -16,7 +16,7 @@ XBDIR 		?= SET_XBOOST_PATH
 SOLARIS_CC 	?= gcc
 CC		= gcc
 
-CFLAGS += -DUSE_QSIM
+# CFLAGS += -DUSE_QSIM
 
 # Version
 ifeq ($(VERSION),DEBUG)
@@ -202,8 +202,8 @@ endif
 
 ifeq ($(ARCH_NAME), aarch64)
     ARCH = aarch64
-    CFLAGS += --static
-    LDFLAGS += --static
+#CFLAGS += --static
+#LDFLAGS += --static
 endif
 
 ifeq ($(ARCH_NAME), sun4v)
@@ -216,13 +216,13 @@ endif
 # Global settings
 #################
 
-CFLAGS += -D_REENTRANT --static
+CFLAGS += -D_REENTRANT
 #CFLAGS += -Wall
 CFLAGS += -fno-strict-aliasing
 CFLAGS += -I$(LIBAO_INC) -I$(ROOT)/include
 
 #LDFLAGS += -L$(LIBAO)/lib -latomic_ops 
-LDFLAGS += -lpthread --static
+LDFLAGS += -lpthread
 
 ifdef STM
   ifneq ($(STM), SEQUENTIAL)
