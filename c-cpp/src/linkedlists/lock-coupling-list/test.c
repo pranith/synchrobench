@@ -124,7 +124,7 @@ void *test(void *data) {
   /* Is the first op an update? */
   unext = (rand_range_re(&d->seed, 100) - 1 < d->update);
 		
-  while (stop == 0) {
+  while (d->nb_add+d->nb_remove != 10000) {
 			
     if (unext) { // update
 				
