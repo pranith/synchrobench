@@ -125,7 +125,7 @@ void *test(void *data) {
   /* Is the first op an update? */
   unext = (rand_range_re(&d->seed, 100) - 1 < d->update);
 		
-  while (stop == 0) {
+  while (d->nb_add+d->nb_remove != 10000) {
 			
     if (unext) { // update
 				
@@ -497,7 +497,7 @@ int main(int argc, char **argv)
   printf("Set size      : %d (expected: %d)\n", set_size_l(set), size);
   printf("Duration      : %d (ms)\n", duration);
   printf("#txs          : %lu (%f / s)\n", reads + updates, (reads + updates) * 1000.0 / duration);
-	
+
   printf("#read txs     : ");
   if (effective) {
     printf("%lu (%f / s)\n", effreads, effreads * 1000.0 / duration);

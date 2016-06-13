@@ -135,7 +135,7 @@ void *test(void *data) {
 #ifdef ICC 
 	while (stop == 0) {
 #else
-	while (AO_load_full(&stop) == 0) {
+	  while (d->nb_add+d->nb_remove != 10000) {
 #endif /* ICC */
 		
 		if (unext) { // update

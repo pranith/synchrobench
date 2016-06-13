@@ -156,7 +156,8 @@ void *test(void *data) {
 #ifdef ICC
 	while (stop == 0) {
 #else
-	while (AO_load_full(&stop) == 0) {
+	  while (numtx < 1000000) {
+	  //while (AO_load_full(&stop) == 0) {
 #endif /* ICC */
 		
 	  if (unext) { // update

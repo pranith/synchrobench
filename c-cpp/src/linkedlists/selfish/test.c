@@ -187,7 +187,7 @@ void *test(void *data) {
 	if (d.bias_enabled)
 		last = d.bias_offset;
 
-	while (atomic_load(&stop) == 0) {
+	while (d->nb_add+d->nb_remove != 10000) {
 		// Is the next op an update?
 		int do_update;
 		if (d.effective)
