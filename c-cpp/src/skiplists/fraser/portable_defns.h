@@ -16,7 +16,7 @@
 #elif defined(ALPHA)
 #include "alpha_defns.h"
 #else
-#error "A valid architecture has not been defined"
+#include "gcc_defns.h"
 #endif
 
 #include <string.h>

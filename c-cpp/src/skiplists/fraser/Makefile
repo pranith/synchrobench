@@ -8,13 +8,15 @@ DEBUGGING := -DNDEBUG
 INCLUDE   := -I../../include/
 
 #ARCH      := SPARC
-ifneq ($(ARCH_NAME), sun4v)
-    ARCH = INTEL
-else 
+ifeq ($(ARCH_NAME), sun4v)
+    ARCH = SPARC
+else ifeq ($(ARCH_NAME), aarch64)
+	ARCH = AARCH64
+else
     ARCH = SPARC
 endif
 
-CFLAGS      += -D$(ARCH) -Wno-unused-value -Wno-format #-fomit-frame-pointer
+CFLAGS      += -g -O0 -D$(ARCH) -Wno-unused-value -Wno-format #-fomit-frame-pointer
 
 #CFLAGS      += $(DEBUGGING)
 COMMON_DEPS += Makefile $(wildcard *.h)
