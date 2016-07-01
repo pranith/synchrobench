@@ -63,7 +63,8 @@ void urcu_read_lock(){
 }
 
 static inline void set_bit(int nr, volatile unsigned long *addr){
-    asm("btsl %1,%0" : "+m" (*addr) : "Ir" (nr));
+    //asm("btsl %1,%0" : "+m" (*addr) : "Ir" (nr));
+    *addr = *addr | (1 << nr); 
 }
 
 void urcu_read_unlock(){
