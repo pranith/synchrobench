@@ -102,9 +102,9 @@ int perform_one_insert_window_operation(thread_data_t* data, seekRecord_t * R, s
 
 inline bool SetBit(volatile unsigned long *array, int bit) {
 
-     bool flag; 
-     __asm__ __volatile__("lock bts %2,%1; setb %0" : "=q" (flag) : "m" (*array), "r" (bit)); return flag; 
-   return flag;
+	bool flag = *array & (1 << bit);
+	*array = *array | (1 << bit);
+	return flag;
 }
 
 bool mark_Node(volatile AO_t * word){
