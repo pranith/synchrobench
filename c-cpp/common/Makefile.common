@@ -204,6 +204,10 @@ ifeq ($(ARCH_NAME), sun4v)
     LDFLAGS += -lrt -m64
 endif
 
+ifeq ($(ARCH_NAME), aarch64)
+    ARCH = aarch64
+endif
+
 #################
 # Global settings
 #################
@@ -215,6 +219,11 @@ CFLAGS += -I$(LIBAO_INC) -I$(ROOT)/include
 
 #LDFLAGS += -L$(LIBAO)/lib -latomic_ops 
 LDFLAGS += -lpthread
+
+ifeq ($(STATIC), 1)
+     CFLAGS += -static
+     LDFLAGS += -static
+endif
 
 ifdef STM
   ifneq ($(STM), SEQUENTIAL)
