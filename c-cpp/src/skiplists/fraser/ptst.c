@@ -22,9 +22,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 #include "portable_defns.h"
 #include "ptst.h"
 
@@ -32,12 +34,12 @@
 pthread_key_t ptst_key;
 ptst_t *ptst_list;
 
-static unsigned int next_id;
+static uint64_t next_id;
 
 ptst_t *critical_enter(void)
 {
     ptst_t *ptst, *next, *new_next;
-    unsigned int id, oid;
+    uint64_t id, oid;
 
     ptst = (ptst_t *)pthread_getspecific(ptst_key);
     if ( ptst == NULL ) 

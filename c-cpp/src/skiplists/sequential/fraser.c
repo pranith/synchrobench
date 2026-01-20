@@ -26,7 +26,7 @@
 
 #include "fraser.h"
 
-unsigned int levelmax;
+extern unsigned int levelmax;
 
 inline int is_marked(uintptr_t i) {
   return (int)(i & (uintptr_t)0x01);

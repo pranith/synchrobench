@@ -8,13 +8,13 @@ DEBUGGING := -DNDEBUG
 INCLUDE   := -I../../include/
 
 #ARCH      := SPARC
-ifeq ($(ARCH_NAME), sun4v)
-    ARCH = SPARC
-else ifeq ($(ARCH_NAME), aarch64)
-	ARCH = AARCH64
-else
-    ARCH = SPARC
-endif
+# ifeq ($(ARCH_NAME), sun4v)
+#    ARCH = SPARC
+#else ifeq ($(ARCH_NAME), aarch64)
+#    ARCH = AARCH64
+#else
+#    ARCH = SPARC
+#endif
 
 CFLAGS      += -g -O0 -D$(ARCH) -Wno-unused-value -Wno-format #-fomit-frame-pointer
 

@@ -9,6 +9,8 @@
 #include "queue.h"
 #include "skiplist.h"
 
+#include <pthread.h>
+
 // Uncomment to collect background stats - reduces performance
 //#define BG_STATS
 

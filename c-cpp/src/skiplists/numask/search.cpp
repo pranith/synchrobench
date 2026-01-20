@@ -14,6 +14,8 @@
  */
 
 #include <pthread.h>
+#include <stdlib.h>
+
 #include "search.h"
 #include "queue.h"
 #include "skiplist.h"

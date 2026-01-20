@@ -6,14 +6,14 @@
 #endif
 
 #include <sys/types.h>
-#include <sys/processor.h>
-#include <sys/procset.h>
+// #include <sys/processor.h>
+// #include <sys/procset.h>
 #include <sched.h>
 #include <alloca.h>
 
 #define CACHE_LINE_SIZE 64
 
-#if 1
+#if 0
 #include <thread.h>
 #define pthread_mutex_t mutex_t
 #define pthread_cond_t  cond_t

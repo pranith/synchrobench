@@ -16,7 +16,7 @@
 /* - Globals - */
 pthread_key_t   ptst_key;
 ptst_t  *ptst_list;
-static unsigned int next_id;
+static uint64_t next_id;
 
 /* - Private function declarations - */
 static void ptst_destructor(ptst_t *ptst);
@@ -43,7 +43,7 @@ static void ptst_destructor(ptst_t *ptst)
 ptst_t* ptst_critical_enter(void)
 {
         ptst_t *ptst, *next;
-        unsigned int id;
+        uint64_t id;
 
         ptst = (ptst_t*) pthread_getspecific(ptst_key);
         if (NULL == ptst) {

@@ -14,7 +14,7 @@ XBDIR 		?= SET_XBOOST_PATH
 
 # Compiler
 SOLARIS_CC 	?= gcc
-CC		= gcc
+CC		?= gcc
 
 # Version
 ifeq ($(VERSION),DEBUG)
@@ -206,6 +206,8 @@ endif
 
 ifeq ($(ARCH_NAME), aarch64)
     ARCH = aarch64
+    CC = aarch64-linux-gnu-gcc
+    CXX = aarch64-linux-gnu-g++
 endif
 
 #################

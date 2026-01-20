@@ -10,6 +10,7 @@ CFLAGS += -std=gnu89
 all:	main
 
 new_urcu.o:
+	echo @$(CC)
 	$(CC) $(CFLAGS) -c -o $(BUILDIR)/new_urcu.o new_urcu.c
 
 citrus.o: urcu.h

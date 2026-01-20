@@ -23,7 +23,7 @@
 
 #include "skiplist-lock.h"
 
-unsigned int levelmax;
+// unsigned int levelmax;
 
 static int gc_id[MAX_SIZES];
 
